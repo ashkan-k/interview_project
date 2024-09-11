@@ -1,0 +1,32 @@
+services:
+    laravel_app:
+        image: your-laravel-image
+        container_name: laravel_app
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - "8000:80"
+        environment:
+            DB_CONNECTION: mysql
+            DB_HOST: mysql      # Ensure this matches your MySQL service name
+            DB_PORT: 3306
+            DB_DATABASE: laravel_db
+            DB_USERNAME: root
+            DB_PASSWORD: yourpassword
+        depends_on:
+            - mysql
+
+    mysql:
+        image: mysql:latest
+        container_name: mysql
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: yourpassword
+            MYSQL_DATABASE: laravel_db
+        volumes:
+            - mysql_data:/var/lib/mysql
+
+volumes:
+    mysql_data:
