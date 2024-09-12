@@ -31,7 +31,7 @@
 3. تولید کلید برنامه:
 
     ```bash
-    docker-compose exec app php artisan key:generate
+    docker-compose exec laravel_app php artisan key:generate
     ```
 
 4. ساخت و اجرای کانتینرهای Docker:
