@@ -16,7 +16,7 @@
 1. کلون کردن مخزن:
 
     ```bash
-    git clone https://github.com/your-repo/your-project.git
+    git clone https://github.com/ashkan-k/interview_project.git
     cd interview_project
     ```
 
@@ -47,21 +47,15 @@
     - **Nginx**: به عنوان وب سرور.
     - Migrate کردن دیتابیس.
 
-[comment]: <> (5. اجرای مهاجرت‌های پایگاه داده:)
 
-[comment]: <> (    ```bash)
-
-[comment]: <> (    docker-compose exec app php artisan migrate)
-
-[comment]: <> (    ```)
-
-8. دسترسی به برنامه:
+6. دسترسی به برنامه:
 
    پس از راه‌اندازی کانتینرها، برنامه لاراول شما در آدرس زیر در دسترس خواهد بود:
 
     ```
     http://localhost:8000
     ```
+
 
 ## ساختار پروژه
 
@@ -71,3 +65,47 @@
 - **docker/**: فایل‌های پیکربندی Docker برای پروژه.
 - **routes/**: مسیرهای وب و API.
 - **resources/**: ویوهای Blade و منابع فرانت‌اند.
+
+## آدرس های api ها
+
+- **/api/docs**: صفحه سوگر api ها.
+- **/api/login**: ورود.
+- **/api/verify**: تایید حساب کاربری (دریافت کد پیامک شده).
+- **/api/logout**: خروج.
+- **/api/calculate-distance**: تعیین هزینه مسافت ها API.
+
+
+# راه اندازی بدون داکر
+
+1. کلون کردن مخزن:
+
+    ```bash
+    git clone https://github.com/ashkan-k/interview_project.git
+    cd interview_project
+    ```
+
+2. فایل .env-example را کپی کرده و پیکربندی کنید:
+
+    ```bash
+    cp .env.example .env
+    ```
+
+   مطمئن شوید که اطلاعات پایگاه داده و سایر جزئیات مورد نیاز را در فایل `.env` تنظیم کرده‌اید.
+
+3. تولید کلید برنامه:
+
+    ```bash
+    php artisan key:generate
+    ```
+
+3. اجرای کامند مایگریشین ها:
+
+    ```bash
+    php artisan migrate
+    ```
+
+3. اجرای کامند ساخت کانفیگ سوگر api ها:
+
+    ```bash
+    php artisan l5-swagger:generate
+    ```
